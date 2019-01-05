@@ -135,7 +135,7 @@
 
     NSInteger i;
     NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(i))];
-    [data getBytes:&i];
+    [data getBytes:&i length:sizeof(i)];
     self.position += data.length;
 
     return i;
@@ -150,7 +150,7 @@
 
     NSUInteger i;
     NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(i))];
-    [data getBytes:&i];
+    [data getBytes:&i length:sizeof(i)];
     self.position += data.length;
 
     return i;
@@ -165,7 +165,7 @@
 
     int i;
     NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(i))];
-    [data getBytes:&i];
+    [data getBytes:&i length:sizeof(i)];
     self.position += data.length;
 
     return i;
@@ -180,7 +180,7 @@
 
     unsigned int i;
     NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(i))];
-    [data getBytes:&i];
+    [data getBytes:&i length:sizeof(i)];
     self.position += data.length;
 
     return i;
@@ -195,7 +195,7 @@
 
     long l;
     NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(l))];
-    [data getBytes:&l];
+    [data getBytes:&l length:sizeof(l)];
     self.position += data.length;
 
     return l;
@@ -210,7 +210,7 @@
 
     long long ll;
     NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(ll))];
-    [data getBytes:&ll];
+    [data getBytes:&ll length:sizeof(ll)];
     self.position += data.length;
 
     return ll;
@@ -225,7 +225,7 @@
 
     float f;
     NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(f))];
-    [data getBytes:&f];
+    [data getBytes:&f length:sizeof(f)];
     self.position += data.length;
 
     return f;
@@ -240,7 +240,7 @@
 
     double d;
     NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(d))];
-    [data getBytes:&d];
+    [data getBytes:&d length:sizeof(d)];
     self.position += data.length;
 
     return d;
