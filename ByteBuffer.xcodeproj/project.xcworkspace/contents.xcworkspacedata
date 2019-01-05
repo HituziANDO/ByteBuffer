@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:MKAByteBuffer.xcodeproj">
+      location = "self:ByteBuffer.xcodeproj">
    </FileRef>
 </Workspace>
