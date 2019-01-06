@@ -8,6 +8,8 @@
 
 #import "BYTByteBuffer.h"
 
+#import "NSData+BYTExtension.h"
+
 @interface BYTByteBuffer ()
 
 @property (nonatomic) NSUInteger capacity;
@@ -78,35 +80,47 @@
 #pragma mark - public method
 
 - (instancetype)putInteger:(NSInteger)i {
-    return [self putData:[NSData dataWithBytes:&i length:sizeof(i)]];
+    return [self putData:[NSData byt_dataWithInteger:i]];
 }
 
 - (instancetype)putUInteger:(NSUInteger)i {
-    return [self putData:[NSData dataWithBytes:&i length:sizeof(i)]];
+    return [self putData:[NSData byt_dataWithUInteger:i]];
+}
+
+- (instancetype)putShort:(short)s {
+    return [self putData:[NSData byt_dataWithShort:s]];
+}
+
+- (instancetype)putInt8:(int8_t)i {
+    return [self putData:[NSData byt_dataWithInt8:i]];
+}
+
+- (instancetype)putUInt8:(uint8_t)i {
+    return [self putData:[NSData byt_dataWithUInt8:i]];
 }
 
 - (instancetype)putInt:(int)i {
-    return [self putData:[NSData dataWithBytes:&i length:sizeof(i)]];
+    return [self putData:[NSData byt_dataWithInt:i]];
 }
 
 - (instancetype)putUInt:(unsigned int)i {
-    return [self putData:[NSData dataWithBytes:&i length:sizeof(i)]];
+    return [self putData:[NSData byt_dataWithUInt:i]];
 }
 
 - (instancetype)putLong:(long)l {
-    return [self putData:[NSData dataWithBytes:&l length:sizeof(l)]];
+    return [self putData:[NSData byt_dataWithLong:l]];
 }
 
 - (instancetype)putLongLong:(long long)ll {
-    return [self putData:[NSData dataWithBytes:&ll length:sizeof(ll)]];
+    return [self putData:[NSData byt_dataWithLongLong:ll]];
 }
 
 - (instancetype)putFloat:(float)f {
-    return [self putData:[NSData dataWithBytes:&f length:sizeof(f)]];
+    return [self putData:[NSData byt_dataWithFloat:f]];
 }
 
 - (instancetype)putDouble:(double)d {
-    return [self putData:[NSData dataWithBytes:&d length:sizeof(d)]];
+    return [self putData:[NSData byt_dataWithDouble:d]];
 }
 
 - (instancetype)putUTF8String:(NSString *)string {
@@ -133,12 +147,10 @@
                                      userInfo:nil];
     }
 
-    NSInteger i;
-    NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(i))];
-    [data getBytes:&i length:sizeof(i)];
-    self.position += data.length;
+    NSInteger value = [self.buff byt_toIntegerWithLocation:self.position];
+    self.position += sizeof(value);
 
-    return i;
+    return value;
 }
 
 - (NSUInteger)getUInteger {
@@ -148,12 +160,49 @@
                                      userInfo:nil];
     }
 
-    NSUInteger i;
-    NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(i))];
-    [data getBytes:&i length:sizeof(i)];
-    self.position += data.length;
+    NSUInteger value = [self.buff byt_toUIntegerWithLocation:self.position];
+    self.position += sizeof(value);
 
-    return i;
+    return value;
+}
+
+- (short)getShort {
+    if (self.position >= self.limit) {
+        @throw [NSException exceptionWithName:NSRangeException
+                                       reason:@"Overflow."
+                                     userInfo:nil];
+    }
+
+    short value = [self.buff byt_toShortWithLocation:self.position];
+    self.position += sizeof(value);
+
+    return value;
+}
+
+- (int8_t)getInt8 {
+    if (self.position >= self.limit) {
+        @throw [NSException exceptionWithName:NSRangeException
+                                       reason:@"Overflow."
+                                     userInfo:nil];
+    }
+
+    int8_t value = [self.buff byt_toInt8WithLocation:self.position];
+    self.position += sizeof(value);
+
+    return value;
+}
+
+- (uint8_t)getUInt8 {
+    if (self.position >= self.limit) {
+        @throw [NSException exceptionWithName:NSRangeException
+                                       reason:@"Overflow."
+                                     userInfo:nil];
+    }
+
+    uint8_t value = [self.buff byt_toUInt8WithLocation:self.position];
+    self.position += sizeof(value);
+
+    return value;
 }
 
 - (int)getInt {
@@ -163,12 +212,10 @@
                                      userInfo:nil];
     }
 
-    int i;
-    NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(i))];
-    [data getBytes:&i length:sizeof(i)];
-    self.position += data.length;
+    int value = [self.buff byt_toIntWithLocation:self.position];
+    self.position += sizeof(value);
 
-    return i;
+    return value;
 }
 
 - (unsigned int)getUInt {
@@ -178,12 +225,10 @@
                                      userInfo:nil];
     }
 
-    unsigned int i;
-    NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(i))];
-    [data getBytes:&i length:sizeof(i)];
-    self.position += data.length;
+    unsigned int value = [self.buff byt_toUIntWithLocation:self.position];
+    self.position += sizeof(value);
 
-    return i;
+    return value;
 }
 
 - (long)getLong {
@@ -193,12 +238,10 @@
                                      userInfo:nil];
     }
 
-    long l;
-    NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(l))];
-    [data getBytes:&l length:sizeof(l)];
-    self.position += data.length;
+    long value = [self.buff byt_toLongWithLocation:self.position];
+    self.position += sizeof(value);
 
-    return l;
+    return value;
 }
 
 - (long long)getLongLong {
@@ -208,12 +251,10 @@
                                      userInfo:nil];
     }
 
-    long long ll;
-    NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(ll))];
-    [data getBytes:&ll length:sizeof(ll)];
-    self.position += data.length;
+    long long value = [self.buff byt_toLongLongWithLocation:self.position];
+    self.position += sizeof(value);
 
-    return ll;
+    return value;
 }
 
 - (float)getFloat {
@@ -223,12 +264,10 @@
                                      userInfo:nil];
     }
 
-    float f;
-    NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(f))];
-    [data getBytes:&f length:sizeof(f)];
-    self.position += data.length;
+    float value = [self.buff byt_toFloatWithLocation:self.position];
+    self.position += sizeof(value);
 
-    return f;
+    return value;
 }
 
 - (double)getDouble {
@@ -238,12 +277,10 @@
                                      userInfo:nil];
     }
 
-    double d;
-    NSData *data = [self.buff subdataWithRange:NSMakeRange(self.position, sizeof(d))];
-    [data getBytes:&d length:sizeof(d)];
-    self.position += data.length;
+    double value = [self.buff byt_toDoubleWithLocation:self.position];
+    self.position += sizeof(value);
 
-    return d;
+    return value;
 }
 
 - (NSData *)getData {

@@ -111,6 +111,42 @@ static const NSUInteger kDefaultCapacity = 256;
     XCTAssertEqual(12345, [self.byteBuffer getUInteger]);
 }
 
+- (void)testGetShort {
+    [[[self.byteBuffer putShort:5]
+                       putShort:-3]
+                       putShort:1];
+
+    [self.byteBuffer flip];
+
+    XCTAssertEqual(5, [self.byteBuffer getShort]);
+    XCTAssertEqual(-3, [self.byteBuffer getShort]);
+    XCTAssertEqual(1, [self.byteBuffer getShort]);
+}
+
+- (void)testGetInt8 {
+    [[[self.byteBuffer putInt8:55]
+                       putInt8:-3]
+                       putInt8:1];
+
+    [self.byteBuffer flip];
+
+    XCTAssertEqual(55, [self.byteBuffer getInt8]);
+    XCTAssertEqual(-3, [self.byteBuffer getInt8]);
+    XCTAssertEqual(1, [self.byteBuffer getInt8]);
+}
+
+- (void)testGetUInt8 {
+    [[[self.byteBuffer putUInt8:5]
+                       putUInt8:33]
+                       putUInt8:1];
+
+    [self.byteBuffer flip];
+
+    XCTAssertEqual(5, [self.byteBuffer getUInt8]);
+    XCTAssertEqual(33, [self.byteBuffer getUInt8]);
+    XCTAssertEqual(1, [self.byteBuffer getUInt8]);
+}
+
 - (void)testGetInt {
     [[[self.byteBuffer putInt:2019]
                        putInt:-300]

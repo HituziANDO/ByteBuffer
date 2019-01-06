@@ -6,4 +6,6 @@
 //  Copyright (c) 2019 Hituzi Ando. All rights reserved.
 //
 
+#import "NSData+BYTExtension.h"
+
 #import "BYTByteBuffer.h"

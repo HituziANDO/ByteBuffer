@@ -66,6 +66,30 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)putUInteger:(NSUInteger)i;
 /**
+ * Puts the short value.
+ *
+ * @param s A short value.
+ * @return Self.
+ * @throw NSRangeException.
+ */
+- (instancetype)putShort:(short)s;
+/**
+ * Puts the int8_t value.
+ *
+ * @param i An int8_t value.
+ * @return Self.
+ * @throw NSRangeException.
+ */
+- (instancetype)putInt8:(int8_t)i;
+/**
+ * Puts the uint8_t value.
+ *
+ * @param i An uint8_t value.
+ * @return Self.
+ * @throw NSRangeException.
+ */
+- (instancetype)putUInt8:(uint8_t)i;
+/**
  * Puts the int value.
  *
  * @param i An int value.
@@ -143,6 +167,27 @@ NS_ASSUME_NONNULL_BEGIN
  * @throw NSRangeException.
  */
 - (NSUInteger)getUInteger;
+/**
+ * Gets the short value.
+ *
+ * @return A short value.
+ * @throw NSRangeException.
+ */
+- (short)getShort;
+/**
+ * Gets the int8_t value.
+ *
+ * @return An int8_t value.
+ * @throw NSRangeException.
+ */
+- (int8_t)getInt8;
+/**
+ * Gets the uint8_t value.
+ *
+ * @return An uint8_t value.
+ * @throw NSRangeException.
+ */
+- (uint8_t)getUInt8;
 /**
  * Gets the int value.
  *

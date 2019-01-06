@@ -25,6 +25,7 @@
 		5E89C04421E06A790007EF33 /* ByteBufferTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E89C04321E06A790007EF33 /* ByteBufferTests.m */; };
 		5E89C04621E06A790007EF33 /* libByteBuffer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E89C03121E06A430007EF33 /* libByteBuffer.a */; };
 		5E89C05D21E081D90007EF33 /* BYTByteBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E89C05C21E081D90007EF33 /* BYTByteBuffer.m */; };
+		5E89C08021E1C15D0007EF33 /* NSData+BYTExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E89C07F21E1C15D0007EF33 /* NSData+BYTExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		5E89C04521E06A790007EF33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E89C05B21E081D90007EF33 /* BYTByteBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYTByteBuffer.h; sourceTree = "<group>"; };
 		5E89C05C21E081D90007EF33 /* BYTByteBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BYTByteBuffer.m; sourceTree = "<group>"; };
+		5E89C07E21E1C15D0007EF33 /* NSData+BYTExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+BYTExtension.h"; sourceTree = "<group>"; };
+		5E89C07F21E1C15D0007EF33 /* NSData+BYTExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+BYTExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,7 @@
 			children = (
 				5E89C05B21E081D90007EF33 /* BYTByteBuffer.h */,
 				5E89C03421E06A430007EF33 /* ByteBuffer.h */,
+				5E89C07E21E1C15D0007EF33 /* NSData+BYTExtension.h */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -128,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				5E89C05C21E081D90007EF33 /* BYTByteBuffer.m */,
+				5E89C07F21E1C15D0007EF33 /* NSData+BYTExtension.m */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E89C08021E1C15D0007EF33 /* NSData+BYTExtension.m in Sources */,
 				5E89C05D21E081D90007EF33 /* BYTByteBuffer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +420,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hituzi.ByteBufferTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -431,6 +438,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hituzi.ByteBufferTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -19,6 +19,7 @@ pod "ByteBuffer"
 
 1. Download latest [ByteBuffer](https://github.com/HituziANDO/ByteBuffer/releases)
 1. Drag & Drop ByteBuffer.framework into your Xcode project
+1. Add `-all_load` to Build Settings > Linking > Other Linker Flags
 
 ## Usage
 
