@@ -147,6 +147,78 @@ static const NSUInteger kDefaultCapacity = 256;
     XCTAssertEqual(1, [self.byteBuffer getUInt8]);
 }
 
+- (void)testGetInt16 {
+    [[[self.byteBuffer putInt16:32000]
+                       putInt16:-32000]
+                       putInt16:1];
+
+    [self.byteBuffer flip];
+
+    XCTAssertEqual(32000, [self.byteBuffer getInt16]);
+    XCTAssertEqual(-32000, [self.byteBuffer getInt16]);
+    XCTAssertEqual(1, [self.byteBuffer getInt16]);
+}
+
+- (void)testGetUInt16 {
+    [[[self.byteBuffer putUInt16:32000]
+                       putUInt16:64000]
+                       putUInt16:1];
+
+    [self.byteBuffer flip];
+
+    XCTAssertEqual(32000, [self.byteBuffer getUInt16]);
+    XCTAssertEqual(64000, [self.byteBuffer getUInt16]);
+    XCTAssertEqual(1, [self.byteBuffer getUInt16]);
+}
+
+- (void)testGetInt32 {
+    [[[self.byteBuffer putInt32:2100000000]
+                       putInt32:-2100000000]
+                       putInt32:1];
+
+    [self.byteBuffer flip];
+
+    XCTAssertEqual(2100000000, [self.byteBuffer getInt32]);
+    XCTAssertEqual(-2100000000, [self.byteBuffer getInt32]);
+    XCTAssertEqual(1, [self.byteBuffer getInt32]);
+}
+
+- (void)testGetUInt32 {
+    [[[self.byteBuffer putUInt32:2100000000]
+                       putUInt32:4200000000]
+                       putUInt32:1];
+
+    [self.byteBuffer flip];
+
+    XCTAssertEqual(2100000000, [self.byteBuffer getUInt32]);
+    XCTAssertEqual(4200000000, [self.byteBuffer getUInt32]);
+    XCTAssertEqual(1, [self.byteBuffer getUInt32]);
+}
+
+- (void)testGetInt64 {
+    [[[self.byteBuffer putInt64:9000000000000000000]
+                       putInt64:-9000000000000000000]
+                       putInt64:1];
+
+    [self.byteBuffer flip];
+
+    XCTAssertEqual(9000000000000000000, [self.byteBuffer getInt64]);
+    XCTAssertEqual(-9000000000000000000, [self.byteBuffer getInt64]);
+    XCTAssertEqual(1, [self.byteBuffer getInt64]);
+}
+
+- (void)testGetUInt64 {
+    [[[self.byteBuffer putUInt64:9000000000000000000]
+                       putUInt64:18000000000000000000]
+                       putUInt64:1];
+
+    [self.byteBuffer flip];
+
+    XCTAssertEqual(9000000000000000000, [self.byteBuffer getUInt64]);
+    XCTAssertEqual(18000000000000000000, [self.byteBuffer getUInt64]);
+    XCTAssertEqual(1, [self.byteBuffer getUInt64]);
+}
+
 - (void)testGetInt {
     [[[self.byteBuffer putInt:2019]
                        putInt:-300]

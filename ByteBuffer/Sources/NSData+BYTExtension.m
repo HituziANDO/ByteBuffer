@@ -47,6 +47,48 @@
     return value;
 }
 
+- (int16_t)byt_toInt16 {
+    int16_t value;
+    [self getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
+- (uint16_t)byt_toUInt16 {
+    uint16_t value;
+    [self getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
+- (int32_t)byt_toInt32 {
+    int32_t value;
+    [self getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
+- (uint32_t)byt_toUInt32 {
+    uint32_t value;
+    [self getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
+- (int64_t)byt_toInt64 {
+    int64_t value;
+    [self getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
+- (uint64_t)byt_toUInt64 {
+    uint64_t value;
+    [self getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
 - (int)byt_toInt {
     int value;
     [self getBytes:&value length:sizeof(value)];
@@ -119,6 +161,30 @@
     return [NSData dataWithBytes:&value length:sizeof(value)];
 }
 
++ (instancetype)byt_dataWithInt16:(int16_t)value {
+    return [NSData dataWithBytes:&value length:sizeof(value)];
+}
+
++ (instancetype)byt_dataWithUInt16:(uint16_t)value {
+    return [NSData dataWithBytes:&value length:sizeof(value)];
+}
+
++ (instancetype)byt_dataWithInt32:(int32_t)value {
+    return [NSData dataWithBytes:&value length:sizeof(value)];
+}
+
++ (instancetype)byt_dataWithUInt32:(uint32_t)value {
+    return [NSData dataWithBytes:&value length:sizeof(value)];
+}
+
++ (instancetype)byt_dataWithInt64:(int64_t)value {
+    return [NSData dataWithBytes:&value length:sizeof(value)];
+}
+
++ (instancetype)byt_dataWithUInt64:(uint64_t)value {
+    return [NSData dataWithBytes:&value length:sizeof(value)];
+}
+
 + (instancetype)byt_dataWithInt:(int)value {
     return [NSData dataWithBytes:&value length:sizeof(value)];
 }
@@ -179,6 +245,54 @@
 
 - (uint8_t)byt_toUInt8WithLocation:(NSUInteger)loc {
     uint8_t value;
+    NSData *data = [self subdataWithRange:NSMakeRange(loc, sizeof(value))];
+    [data getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
+- (int16_t)byt_toInt16WithLocation:(NSUInteger)loc {
+    int16_t value;
+    NSData *data = [self subdataWithRange:NSMakeRange(loc, sizeof(value))];
+    [data getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
+- (uint16_t)byt_toUInt16WithLocation:(NSUInteger)loc {
+    uint16_t value;
+    NSData *data = [self subdataWithRange:NSMakeRange(loc, sizeof(value))];
+    [data getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
+- (int32_t)byt_toInt32WithLocation:(NSUInteger)loc {
+    int32_t value;
+    NSData *data = [self subdataWithRange:NSMakeRange(loc, sizeof(value))];
+    [data getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
+- (uint32_t)byt_toUInt32WithLocation:(NSUInteger)loc {
+    uint32_t value;
+    NSData *data = [self subdataWithRange:NSMakeRange(loc, sizeof(value))];
+    [data getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
+- (int64_t)byt_toInt64WithLocation:(NSUInteger)loc {
+    int64_t value;
+    NSData *data = [self subdataWithRange:NSMakeRange(loc, sizeof(value))];
+    [data getBytes:&value length:sizeof(value)];
+
+    return value;
+}
+
+- (uint64_t)byt_toUInt64WithLocation:(NSUInteger)loc {
+    uint64_t value;
     NSData *data = [self subdataWithRange:NSMakeRange(loc, sizeof(value))];
     [data getBytes:&value length:sizeof(value)];
 

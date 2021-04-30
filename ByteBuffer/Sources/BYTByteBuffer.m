@@ -99,6 +99,30 @@
     return [self putData:[NSData byt_dataWithUInt8:i]];
 }
 
+- (instancetype)putInt16:(int16_t)i {
+    return [self putData:[NSData byt_dataWithInt16:i]];
+}
+
+- (instancetype)putUInt16:(uint16_t)i {
+    return [self putData:[NSData byt_dataWithUInt16:i]];
+}
+
+- (instancetype)putInt32:(int32_t)i {
+    return [self putData:[NSData byt_dataWithInt32:i]];
+}
+
+- (instancetype)putUInt32:(uint32_t)i {
+    return [self putData:[NSData byt_dataWithUInt32:i]];
+}
+
+- (instancetype)putInt64:(int64_t)i {
+    return [self putData:[NSData byt_dataWithInt64:i]];
+}
+
+- (instancetype)putUInt64:(uint64_t)i {
+    return [self putData:[NSData byt_dataWithUInt64:i]];
+}
+
 - (instancetype)putInt:(int)i {
     return [self putData:[NSData byt_dataWithInt:i]];
 }
@@ -200,6 +224,84 @@
     }
 
     uint8_t value = [self.buff byt_toUInt8WithLocation:self.position];
+    self.position += sizeof(value);
+
+    return value;
+}
+
+- (int16_t)getInt16 {
+    if (self.position >= self.limit) {
+        @throw [NSException exceptionWithName:NSRangeException
+                                       reason:@"Overflow."
+                                     userInfo:nil];
+    }
+
+    int16_t value = [self.buff byt_toInt16WithLocation:self.position];
+    self.position += sizeof(value);
+
+    return value;
+}
+
+- (uint16_t)getUInt16 {
+    if (self.position >= self.limit) {
+        @throw [NSException exceptionWithName:NSRangeException
+                                       reason:@"Overflow."
+                                     userInfo:nil];
+    }
+
+    uint16_t value = [self.buff byt_toUInt16WithLocation:self.position];
+    self.position += sizeof(value);
+
+    return value;
+}
+
+- (int32_t)getInt32 {
+    if (self.position >= self.limit) {
+        @throw [NSException exceptionWithName:NSRangeException
+                                       reason:@"Overflow."
+                                     userInfo:nil];
+    }
+
+    int32_t value = [self.buff byt_toInt32WithLocation:self.position];
+    self.position += sizeof(value);
+
+    return value;
+}
+
+- (uint32_t)getUInt32 {
+    if (self.position >= self.limit) {
+        @throw [NSException exceptionWithName:NSRangeException
+                                       reason:@"Overflow."
+                                     userInfo:nil];
+    }
+
+    uint32_t value = [self.buff byt_toUInt32WithLocation:self.position];
+    self.position += sizeof(value);
+
+    return value;
+}
+
+- (int64_t)getInt64 {
+    if (self.position >= self.limit) {
+        @throw [NSException exceptionWithName:NSRangeException
+                                       reason:@"Overflow."
+                                     userInfo:nil];
+    }
+
+    int64_t value = [self.buff byt_toInt64WithLocation:self.position];
+    self.position += sizeof(value);
+
+    return value;
+}
+
+- (uint64_t)getUInt64 {
+    if (self.position >= self.limit) {
+        @throw [NSException exceptionWithName:NSRangeException
+                                       reason:@"Overflow."
+                                     userInfo:nil];
+    }
+
+    uint64_t value = [self.buff byt_toUInt64WithLocation:self.position];
     self.position += sizeof(value);
 
     return value;
