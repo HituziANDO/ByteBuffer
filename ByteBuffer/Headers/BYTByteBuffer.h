@@ -90,6 +90,54 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)putUInt8:(uint8_t)i;
 /**
+ * Puts the int16_t value.
+ *
+ * @param i An int16_t value.
+ * @return Self.
+ * @throw NSRangeException.
+ */
+- (instancetype)putInt16:(int16_t)i;
+/**
+ * Puts the uint16_t value.
+ *
+ * @param i An uint16_t value.
+ * @return Self.
+ * @throw NSRangeException.
+ */
+- (instancetype)putUInt16:(uint16_t)i;
+/**
+ * Puts the int32_t value.
+ *
+ * @param i An int32_t value.
+ * @return Self.
+ * @throw NSRangeException.
+ */
+- (instancetype)putInt32:(int32_t)i;
+/**
+ * Puts the uint32_t value.
+ *
+ * @param i An uint32_t value.
+ * @return Self.
+ * @throw NSRangeException.
+ */
+- (instancetype)putUInt32:(uint32_t)i;
+/**
+ * Puts the int64_t value.
+ *
+ * @param i An int64_t value.
+ * @return Self.
+ * @throw NSRangeException.
+ */
+- (instancetype)putInt64:(int64_t)i;
+/**
+ * Puts the uint64_t value.
+ *
+ * @param i An uint64_t value.
+ * @return Self.
+ * @throw NSRangeException.
+ */
+- (instancetype)putUInt64:(uint64_t)i;
+/**
  * Puts the int value.
  *
  * @param i An int value.
@@ -188,6 +236,48 @@ NS_ASSUME_NONNULL_BEGIN
  * @throw NSRangeException.
  */
 - (uint8_t)getUInt8;
+/**
+ * Gets the int16_t value.
+ *
+ * @return An int16_t value.
+ * @throw NSRangeException.
+ */
+- (int16_t)getInt16;
+/**
+ * Gets the uint16_t value.
+ *
+ * @return An uint16_t value.
+ * @throw NSRangeException.
+ */
+- (uint16_t)getUInt16;
+/**
+ * Gets the int32_t value.
+ *
+ * @return An int32_t value.
+ * @throw NSRangeException.
+ */
+- (int32_t)getInt32;
+/**
+ * Gets the uint32_t value.
+ *
+ * @return An uint32_t value.
+ * @throw NSRangeException.
+ */
+- (uint32_t)getUInt32;
+/**
+ * Gets the int64_t value.
+ *
+ * @return An int64_t value.
+ * @throw NSRangeException.
+ */
+- (int64_t)getInt64;
+/**
+ * Gets the uint64_t value.
+ *
+ * @return An uint64_t value.
+ * @throw NSRangeException.
+ */
+- (uint64_t)getUInt64;
 /**
  * Gets the int value.
  *

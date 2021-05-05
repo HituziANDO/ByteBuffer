@@ -32,6 +32,30 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) uint8_t byt_toUInt8;
 /**
+ * Converts the receiver to int16_t.
+ */
+@property (nonatomic, readonly) int16_t byt_toInt16;
+/**
+ * Converts the receiver to uint16_t.
+ */
+@property (nonatomic, readonly) uint16_t byt_toUInt16;
+/**
+ * Converts the receiver to int32_t.
+ */
+@property (nonatomic, readonly) int32_t byt_toInt32;
+/**
+ * Converts the receiver to uint32_t.
+ */
+@property (nonatomic, readonly) uint32_t byt_toUInt32;
+/**
+ * Converts the receiver to int8_t.
+ */
+@property (nonatomic, readonly) int64_t byt_toInt64;
+/**
+ * Converts the receiver to uint64_t.
+ */
+@property (nonatomic, readonly) uint64_t byt_toUInt64;
+/**
  * Converts the receiver to int.
  */
 @property (nonatomic, readonly) int byt_toInt;
@@ -95,6 +119,48 @@ NS_ASSUME_NONNULL_BEGIN
  * @return A NSData
  */
 + (instancetype)byt_dataWithUInt8:(uint8_t)value;
+/**
+ * Creates the instance from given int16_t value.
+ *
+ * @param value A value
+ * @return A NSData
+ */
++ (instancetype)byt_dataWithInt16:(int16_t)value;
+/**
+ * Creates the instance from given uint16_t value.
+ *
+ * @param value A value
+ * @return A NSData
+ */
++ (instancetype)byt_dataWithUInt16:(uint16_t)value;
+/**
+ * Creates the instance from given int32_t value.
+ *
+ * @param value A value
+ * @return A NSData
+ */
++ (instancetype)byt_dataWithInt32:(int32_t)value;
+/**
+ * Creates the instance from given uint32_t value.
+ *
+ * @param value A value
+ * @return A NSData
+ */
++ (instancetype)byt_dataWithUInt32:(uint32_t)value;
+/**
+ * Creates the instance from given int64_t value.
+ *
+ * @param value A value
+ * @return A NSData
+ */
++ (instancetype)byt_dataWithInt64:(int64_t)value;
+/**
+ * Creates the instance from given uint64_t value.
+ *
+ * @param value A value
+ * @return A NSData
+ */
++ (instancetype)byt_dataWithUInt64:(uint64_t)value;
 /**
  * Creates the instance from given int value.
  *
@@ -173,6 +239,48 @@ NS_ASSUME_NONNULL_BEGIN
  * @return A value.
  */
 - (uint8_t)byt_toUInt8WithLocation:(NSUInteger)loc;
+/**
+ * Converts the receiver using given starting location to int16_t.
+ *
+ * @param loc A starting location of range.
+ * @return A value.
+ */
+- (int16_t)byt_toInt16WithLocation:(NSUInteger)loc;
+/**
+ * Converts the receiver using given starting location to uint16_t.
+ *
+ * @param loc A starting location of range.
+ * @return A value.
+ */
+- (uint16_t)byt_toUInt16WithLocation:(NSUInteger)loc;
+/**
+ * Converts the receiver using given starting location to int32_t.
+ *
+ * @param loc A starting location of range.
+ * @return A value.
+ */
+- (int32_t)byt_toInt32WithLocation:(NSUInteger)loc;
+/**
+ * Converts the receiver using given starting location to uint32_t.
+ *
+ * @param loc A starting location of range.
+ * @return A value.
+ */
+- (uint32_t)byt_toUInt32WithLocation:(NSUInteger)loc;
+/**
+ * Converts the receiver using given starting location to int64_t.
+ *
+ * @param loc A starting location of range.
+ * @return A value.
+ */
+- (int64_t)byt_toInt64WithLocation:(NSUInteger)loc;
+/**
+ * Converts the receiver using given starting location to uint64_t.
+ *
+ * @param loc A starting location of range.
+ * @return A value.
+ */
+- (uint64_t)byt_toUInt64WithLocation:(NSUInteger)loc;
 /**
  * Converts the receiver using given starting location to int.
  *
